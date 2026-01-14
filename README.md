@@ -5,7 +5,7 @@
 The extended network for foundational research in computation, emergence, and intelligence, brought to life by researchers and engineers working together, powered by AI. Anyone, anywhere.
 
 🌐 **Website:** [xdnmx.org](https://xdnmx.org)  
-📧 **Contact:** info@xdnmx.org
+📧 **Contact:** robinfnixon+xdnmx@gmail.com
 
 ---
 
