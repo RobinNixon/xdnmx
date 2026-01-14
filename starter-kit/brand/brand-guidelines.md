@@ -104,22 +104,29 @@ xDNMX = Extended Dynamics. The brand reflects what we are: an open network conne
 
 ### The Mark
 
-The xDNMX wordmark is the primary logo. The "x" represents:
+The xDNMX logo is a geometric design using black triangles on white:
+
+![xDNMX Logo](./logo/logo.png)
+
+- **Left side:** Triangles forming a ">" or "D" shape (pointing right — discovery)
+- **Right side:** Triangles forming an "X" shape (extended, multiplication)
+
+The design represents:
 - Extended (like TEDx — anyone can run an event)
 - The unknown (what we're searching for)
-- Multiplication (discovery × building)
+- Discovery → Building (the arrow pointing to the X)
 
 ### Logo Versions
 
-1. **Full wordmark:** xDNMX
-2. **With tagline:** xDNMX — Extended Dynamics
-3. **Icon only:** x (for favicons, small applications)
+1. **Primary:** Black on white (current)
+2. **Inverted:** White on dark backgrounds (create as needed)
+3. **With text:** Logo + "xDNMX" wordmark (create as needed)
 
 ### Construction
 
-- The "x" is set in monospace (JetBrains Mono Bold)
-- "DNMX" is set in Inter Bold or Space Grotesk Bold
-- Optical alignment between the two typefaces
+- Geometric triangles on a roughly square canvas
+- Current file: 748 x 710 pixels
+- Maintain aspect ratio when scaling
 
 ### Clear Space
 

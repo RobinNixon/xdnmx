@@ -42,9 +42,11 @@ All fonts are open source and freely available.
 
 ## Downloads
 
-*(Logo files to be added)*
+| File | Description |
+|------|-------------|
+| [logo.png](./logo/logo.png) | Primary logo (748x710 px) |
 
-For now, use the text mark: **xDNMX** in Inter Bold or Space Grotesk Bold.
+The logo is a geometric design: black triangles on white forming abstract "D" and "X" shapes.
 
 ---
 

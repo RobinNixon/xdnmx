@@ -4,20 +4,17 @@ This document lists brand assets that need to be created manually (design work r
 
 ---
 
-## Logo Files Needed
+## Logo Files Available
 
-### Primary Logo
+The primary logo is available at `logo/logo.png` (748x710 px, black on white).
 
-Create the xDNMX wordmark in these formats:
+### Additional Versions Needed (Optional)
 
-| File | Format | Size | Background |
-|------|--------|------|------------|
-| `logo-dark.svg` | SVG | Vector | For light backgrounds |
-| `logo-light.svg` | SVG | Vector | For dark backgrounds |
-| `logo-dark.png` | PNG | 512x512 | For light backgrounds |
-| `logo-light.png` | PNG | 512x512 | For dark backgrounds |
-| `logo-dark@2x.png` | PNG | 1024x1024 | Retina/HiDPI |
-| `logo-light@2x.png` | PNG | 1024x1024 | Retina/HiDPI |
+| File | Format | Purpose |
+|------|--------|---------|
+| `logo-inverted.png` | PNG | White on dark backgrounds |
+| `logo.svg` | SVG | Vector version for scaling |
+| `logo-with-text.png` | PNG | Logo + "xDNMX" wordmark |
 
 ### Icon (Favicon)
 
@@ -143,10 +140,10 @@ Recommended vendors: Sticker Mule, StickerGiant, or local print shops
 
 If limited time/resources, create in this order:
 
-1. **SVG logo** (dark and light versions) — Used everywhere
-2. **GitHub social preview** — First impression for repo visitors
-3. **Favicon** — Browser credibility
-4. **Slide template** — For presenters
+1. **GitHub social preview** — First impression for repo visitors (use existing logo)
+2. **Favicon** — Browser credibility (use realfavicongenerator.net with logo)
+3. **Slide template** — For presenters
+4. **SVG version of logo** — For perfect scaling
 5. Everything else as needed
 
 ---
