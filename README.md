@@ -2,7 +2,7 @@
 
 **From Discovery to Building**
 
-The extended network for foundational research in computation, emergence, and intelligence — brought to life by researchers and engineers working together, powered by AI. Anyone, anywhere.
+The extended network for foundational research in computation, emergence, and intelligence, brought to life by researchers and engineers working together, powered by AI. Anyone, anywhere.
 
 🌐 **Website:** [xdnmx.org](https://xdnmx.org)  
 📧 **Contact:** info@xdnmx.org
@@ -17,7 +17,7 @@ An extended network where foundational discoveries meet the people who can build
 
 **We believe:**
 - The deepest discoveries need builders, and the best engineering needs foundations
-- Anyone can contribute — singles, labs, teams, wherever you are
+- Anyone can contribute: singles, labs, teams, wherever you are
 - Open source or it didn't happen
 - AI-powered research is the methodology of this moment
 - It should be fun
@@ -39,12 +39,12 @@ Use AI (Claude Code or equivalent) to build defensible papers. Show your discove
 
 ## 🛠️ For Engineers
 
-Build something foundational. Turn a discovery into reality — whether your own insight or inspired by existing research. Browse submitted papers for ideas, or bring your own.
+Build something foundational. Turn a discovery into reality, whether your own insight or inspired by existing research. Browse submitted papers for ideas, or bring your own.
 
 **Requirements:**
 - Public GitHub repository  
 - Open source license (MIT, Apache, GPL, BSD, CC-BY)
-- Foundational focus — not just an app, but *why* it works
+- Foundational focus, not just an app, but *why* it works
 - Workable implementation or proof of concept
 - Clear README explaining the foundation you're building on
 
@@ -72,7 +72,7 @@ This is where the community lives:
 
 | Category | Purpose |
 |----------|---------|
-| 💡 [Discoveries](../../discussions/categories/discoveries) | "I found something — here's my repo" |
+| 💡 [Discoveries](../../discussions/categories/discoveries) | "I found something, here's my repo" |
 | 🛠️ [Builds](../../discussions/categories/builds) | "I built something foundational" |
 | 🤝 [Collaborations](../../discussions/categories/collaborations) | "Researcher seeking engineer" / "Engineer seeking foundation" |
 | ❓ [Questions](../../discussions/categories/questions) | "Has anyone explored X?" |
@@ -97,7 +97,7 @@ Plus recognition, a physical trophy, and connection to the community.
 
 ## 🌍 Run Your Own xDNMX Event
 
-The "x" means extended. Like TEDx, anyone can run an xDNMX event.
+The "x" means extended. Like TEDx, anyone can run an xDNMX event. Just let us know about it!
 
 **What you need:**
 - A room (library, makerspace, someone's garage)
@@ -119,7 +119,7 @@ Coming soon: The xDNMX Starter Kit with templates, brand assets, and guides.
 
 xDNMX began with a simple question: *"How many switches does it take to compute?"*
 
-What followed was seven papers, thousands of AI-powered experiments, and a complete theory of how complexity emerges from simple rules — Substrate Complexity Theory.
+What followed was seven papers, thousands of AI-powered experiments, and a complete theory of how complexity emerges from simple rules, Substrate Complexity Theory.
 
 That work showed what's possible when curiosity meets exhaustive exploration. xDNMX exists to find more people doing the same, and connect them with builders who can bring discoveries to life.
 
