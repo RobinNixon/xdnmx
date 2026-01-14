@@ -108,13 +108,14 @@ The xDNMX logo is a geometric design using black triangles on white:
 
 ![xDNMX Logo](./logo/logo.png)
 
-- **Left side:** Triangles forming a ">" or "D" shape (pointing right — discovery)
-- **Right side:** Triangles forming an "X" shape (extended, multiplication)
+- **Top half:** Triangles forming a "D" and "N" shape
+- **Bottom half:** Triangles forming an "M" and "X"shape
 
 The design represents:
-- Extended (like TEDx — anyone can run an event)
-- The unknown (what we're searching for)
-- Discovery → Building (the arrow pointing to the X)
+- The initials DNMX
+- Cellular automata (gliders)
+- A large final X for eXtended (like TEDx — anyone can run an event)
+- Discovery and Building (single triangles following a path and finally coming together as a pair)
 
 ### Logo Versions
 
