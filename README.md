@@ -111,7 +111,7 @@ The "x" means extended. Like TEDx, anyone can run an xDNMX event. Just let us kn
 3. Discussion, collaboration, chaos
 4. Post results to this repo that night
 
-Coming soon: The xDNMX Starter Kit with templates, brand assets, and guides.
+**[Get the xDNMX Starter Kit](./starter-kit/)** — Everything you need: brand assets, event planning templates, session guides, budget templates, and how to connect to the global network.
 
 ---
 
