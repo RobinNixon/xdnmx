@@ -2,7 +2,7 @@
 
 **From Discovery to Building**
 
-xDNMX = Extended Dynamics (badly spelled, fully intentional).
+xDNMX: The Extended Dynamics Community
 
 The extended network for foundational research in computation, emergence, and intelligence — brought to life by researchers and engineers working together, powered by AI. Anyone, anywhere.
 
