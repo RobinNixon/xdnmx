@@ -1,4 +1,5 @@
 # xDNMX: The Extended Dynamics Community
+# xDNMX: The Extended Dynamics Community
 
 **From Discovery to Building**
 
@@ -56,7 +57,7 @@ Build something foundational. Turn a discovery into reality, whether your own in
 
 1. **Create your repo** with your research or build
 2. **Add an open source license** (MIT, Apache, GPL, BSD, CC-BY)
-3. **Post to Discussions** under [📬 Submissions](../../discussions/categories/submissions)
+3. **Post to Discussions** under 📬 [Submissions](../../discussions/categories/submissions)
 4. **Include:**
    - Link to your repo
    - One-paragraph summary of what you found/built
