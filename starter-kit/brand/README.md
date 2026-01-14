@@ -46,7 +46,7 @@ All fonts are open source and freely available.
 |------|-------------|
 | [logo.png](./logo/logo.png) | Primary logo (748x710 px) |
 
-The logo is a geometric design: black triangles on white forming abstract "D" and "X" shapes.
+The logo is a geometric design: black triangles on white forming "D" "N", "M" and "X" shapes.
 
 ---
 
