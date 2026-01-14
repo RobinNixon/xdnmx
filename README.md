@@ -1,4 +1,4 @@
-# xDNMX — Extended Dynamics
+# xDNMX
 
 **From Discovery to Building**
 
