@@ -74,12 +74,12 @@ This is where the community lives:
 
 | Category | Purpose |
 |----------|---------|
-| [💡 Discoveries](../../discussions/categories/discoveries) | "I found something — here's my repo" |
-| [🛠️ Builds](../../discussions/categories/builds) | "I built something foundational" |
-| [🤝 Collaborations](../../discussions/categories/collaborations) | "Researcher seeking engineer" / "Engineer seeking foundation" |
-| [❓ Questions](../../discussions/categories/questions) | "Has anyone explored X?" |
-| [📬 Submissions](../../discussions/categories/submissions) | Official prize submissions |
-| [🏆 Nominations](../../discussions/categories/nominations) | "This work deserves recognition" |
+| 💡 [Discoveries](../../discussions/categories/discoveries) | "I found something — here's my repo" |
+| 🛠️ [Builds](../../discussions/categories/builds) | "I built something foundational" |
+| 🤝 [Collaborations](../../discussions/categories/collaborations) | "Researcher seeking engineer" / "Engineer seeking foundation" |
+| ❓ [Questions](../../discussions/categories/questions) | "Has anyone explored X?" |
+| 📬 [Submissions](../../discussions/categories/submissions) | Official prize submissions |
+| 🏆 [Nominations](../../discussions/categories/nominations) | "This work deserves recognition" |
 
 ---
 
