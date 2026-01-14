@@ -1,5 +1,4 @@
 # xDNMX: The Extended Dynamics Community
-# xDNMX: The Extended Dynamics Community
 
 **From Discovery to Building**
 
