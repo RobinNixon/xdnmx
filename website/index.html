@@ -1,0 +1,1499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xDNMX — From Discovery to Building</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <meta name="description" content="xDNMX: Extended network for foundational research in computation, emergence, and intelligence — brought to life by researchers and engineers working together, powered by AI.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --black: #fafafa;
+            --white: #0a0a0a;
+            --gray: #9a9a9a;
+            --gray-light: #1a1a1a;
+            --accent: #ff4d4d;
+            --font-mono: 'Space Mono', monospace;
+            --font-serif: 'Instrument Serif', serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-mono);
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--white);
+            border-bottom: 1px solid #2a2a2a;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--black);
+        }
+
+        .nav-logo img {
+            height: 36px;
+            width: auto;
+        }
+
+        .nav-logo span {
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: 0.1em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--black);
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: linear-gradient(135deg, transparent 50%, #151515 50%);
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-tagline {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .hero-tagline em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            max-width: 600px;
+            color: var(--gray);
+            margin-bottom: 3rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--black);
+            border: 1px solid var(--black);
+        }
+
+        .btn-secondary:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .btn-sm {
+            padding: 0.7rem 1.2rem;
+            font-size: 0.75rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-dark {
+            background: #111111;
+            color: var(--black);
+        }
+
+        .section-gray {
+            background: #0f0f0f;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .section-dark .section-label {
+            color: var(--gray);
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        /* What Is DNMX */
+        .what-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .what-card {
+            padding: 2rem;
+            border: 1px solid #2a2a2a;
+            position: relative;
+        }
+
+        .what-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .what-card:hover::before {
+            width: 100%;
+        }
+
+        .what-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .what-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* The Bridge */
+        .bridge-visual {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 2rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .bridge-side {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: #111111;
+        }
+
+        .bridge-side h3 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .bridge-side p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .bridge-arrow {
+            font-size: 3rem;
+            color: var(--accent);
+        }
+
+        /* Requirements */
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+        }
+
+        .requirement-block {
+            padding: 4rem;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .requirement-block:first-child {
+            border-right: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .requirement-icon {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .requirement-block h3 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .requirement-block p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .requirement-list {
+            list-style: none;
+        }
+
+        .requirement-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 0.9rem;
+        }
+
+        .requirement-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Prizes */
+        .prizes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .prize-card {
+            background: #111111;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prize-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .prize-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .prize-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .prize-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .prize-card p {
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .prize-reward {
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Origin Story */
+        .origin-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .origin-text h3 {
+            font-family: var(--font-serif);
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .origin-text p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .origin-quote {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-style: italic;
+            padding: 2rem;
+            border-left: 3px solid var(--accent);
+            background: rgba(255,77,77,0.1);
+        }
+
+        /* Values */
+        .values-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .value-marker {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: #0a0a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .value-item h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .value-item p {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        /* Community */
+        .community-cta {
+            text-align: center;
+            padding: 4rem;
+            background: #151515;
+            color: var(--black);
+            margin-top: 3rem;
+            border: 1px solid #2a2a2a;
+        }
+
+        .community-cta h3 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .community-cta p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Sponsor */
+        .sponsor-section {
+            text-align: center;
+        }
+
+        .sponsor-placeholder {
+            display: inline-block;
+            padding: 2rem 4rem;
+            border: 2px dashed #444;
+            color: var(--gray);
+            margin: 2rem 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #050505;
+            color: var(--black);
+            padding: 4rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .footer-brand p {
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        .footer-links h4 {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--black);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* Page styles */
+        .page {
+            display: none;
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page-hero {
+            padding: 6rem 2rem;
+            background: #111111;
+            color: var(--black);
+        }
+
+        .page-hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            color: var(--gray);
+            max-width: 600px;
+        }
+
+        .page-content {
+            padding: 4rem 2rem;
+        }
+
+        .page-content h2 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            margin-top: 3rem;
+            font-weight: 400;
+        }
+
+        .page-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .page-content p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+            max-width: 700px;
+        }
+
+        .page-content ul, .page-content ol {
+            margin-bottom: 1.5rem;
+            margin-left: 1.5rem;
+            color: var(--gray);
+        }
+
+        .page-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Papers Grid */
+        .papers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .paper-card {
+            border: 1px solid #2a2a2a;
+            padding: 1.5rem;
+            transition: border-color 0.3s;
+        }
+
+        .paper-card:hover {
+            border-color: var(--accent);
+        }
+
+        .paper-card h4 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+
+        .paper-card p {
+            font-size: 0.85rem;
+            margin-bottom: 0;
+        }
+
+        .paper-number {
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 968px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                border-bottom: 1px solid #2a2a2a;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .requirements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .requirement-block:first-child {
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.2);
+            }
+
+            .prizes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .origin-content {
+                grid-template-columns: 1fr;
+            }
+
+            .bridge-visual {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .bridge-arrow {
+                transform: rotate(90deg);
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <a href="#home" class="nav-logo" data-page="home">
+            <img src="images/logo.png" alt="xDNMX">
+            <span>xDNMX</span>
+        </a>
+        <button class="nav-toggle" onclick="toggleNav()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#origin" data-page="origin">Origin</a></li>
+            <li><a href="#philosophy" data-page="philosophy">Philosophy</a></li>
+            <li><a href="#participate" data-page="participate">Participate</a></li>
+            <li><a href="#papers" data-page="papers">Papers</a></li>
+            <li><a href="#prizes" data-page="prizes">Prizes</a></li>
+            <li><a href="#community" data-page="community">Community</a></li>
+            <li><a href="#sponsor" data-page="sponsor">Sponsor</a></li>
+        </ul>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-tagline animate-in">
+                    From <em>Discovery</em><br>to Building
+                </h1>
+                <p class="hero-description animate-in delay-1">
+                    <strong>xDNMX</strong>: The Extended Dynamics Community<br><br>
+                    The extended network for foundational research in computation, emergence, and intelligence — brought to life by researchers and engineers working together, powered by AI. Anyone, anywhere.
+                </p>
+                <div class="hero-cta animate-in delay-2">
+                    <a href="#papers" class="btn btn-primary btn-sm" data-page="papers">Paper Archive</a>
+                    <a href="https://github.com/RobinNixon/xdnmx" class="btn btn-primary btn-sm" target="_blank">GitHub Repo</a>
+                    <a href="https://github.com/RobinNixon/xdnmx/discussions" class="btn btn-primary btn-sm" target="_blank">Discussions</a>
+                    <a href="#origin" class="btn btn-secondary btn-sm" data-page="origin">Read the Story</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- What is DNMX -->
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label">What is xDNMX?</p>
+                    <h2 class="section-title">The extended network bridging<br>discovery and building</h2>
+                </div>
+                <div class="what-grid">
+                    <div class="what-card">
+                        <h3>Not a Conference</h3>
+                        <p>No credential gatekeeping. No institutional requirements. No pay-to-present. Just work that matters.</p>
+                    </div>
+                    <div class="what-card">
+                        <h3>Not a Hackathon</h3>
+                        <p>Not building without foundations. Not speed over substance. Not demos without depth.</p>
+                    </div>
+                    <div class="what-card">
+                        <h3>Something New</h3>
+                        <p>An extended network where foundational discoveries meet the people who can build on them. Local events, global connections. Anyone, anywhere can participate.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Bridge -->
+        <section class="section-gray">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label">The Vision</p>
+                    <h2 class="section-title">Two tribes who need each other</h2>
+                </div>
+                <div class="bridge-visual">
+                    <div class="bridge-side">
+                        <h3>🔬 Researchers</h3>
+                        <p>Ask "why does this work?"<br>Uncover laws, thresholds, necessities<br>Build defensible papers with AI</p>
+                    </div>
+                    <div class="bridge-arrow">⟷</div>
+                    <div class="bridge-side">
+                        <h3>🛠️ Engineers</h3>
+                        <p>Ask "what can I build from this?"<br>Turn foundations into reality<br>Own insights or inspired by research</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Preview -->
+        <section>
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label">Our Values</p>
+                    <h2 class="section-title">What xDNMX believes</h2>
+                </div>
+                <div class="values-list">
+                    <div class="value-item">
+                        <div class="value-marker">01</div>
+                        <div>
+                            <h4>Anyone</h4>
+                            <p>Singles, labs, teams — whatever. No credentials required. The work speaks.</p>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-marker">02</div>
+                        <div>
+                            <h4>Foundational</h4>
+                            <p>We care about why, not just what. Laws over phenomena. Depth over breadth.</p>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-marker">03</div>
+                        <div>
+                            <h4>Open</h4>
+                            <p>GitHub, not arXiv. Open source, always. If it can't be verified, it can't be built on.</p>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-marker">04</div>
+                        <div>
+                            <h4>AI-Powered</h4>
+                            <p>Human intuition × AI exploration = discovery. The methodology that makes this moment possible.</p>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-marker">05</div>
+                        <div>
+                            <h4>Collaborative</h4>
+                            <p>Researchers and engineers together. From discovery to building. Credit given generously.</p>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-marker">06</div>
+                        <div>
+                            <h4>Visible</h4>
+                            <p>Hard to build momentum alone. Here your work finds the people who care — and who can help.</p>
+                        </div>
+                    </div>
+                    <div class="value-item">
+                        <div class="value-marker">07</div>
+                        <div>
+                            <h4>Joyful</h4>
+                            <p>For the fun of figuring it out. If it stops being joyful, we're doing it wrong.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prizes Preview -->
+        <section class="section-gray">
+            <div class="container">
+                <div class="section-header">
+                    <p class="section-label">Recognition</p>
+                    <h2 class="section-title">xDNMX Prizes</h2>
+                </div>
+                <div class="prizes-grid">
+                    <div class="prize-card">
+                        <div class="prize-icon">🔬</div>
+                        <h3>Discovery</h3>
+                        <p>Best foundational insight of the year. AI-powered research that reveals laws, thresholds, necessities.</p>
+                        <span class="prize-reward">API Credits + Recognition</span>
+                    </div>
+                    <div class="prize-card">
+                        <div class="prize-icon">🌉</div>
+                        <h3>Bridge</h3>
+                        <p>Best collaboration between research and engineering. Discovery made real.</p>
+                        <span class="prize-reward">API Credits + Recognition</span>
+                    </div>
+                    <div class="prize-card">
+                        <div class="prize-icon">🛠️</div>
+                        <h3>Build</h3>
+                        <p>Best foundational implementation. Something built that reveals or applies deep principles.</p>
+                        <span class="prize-reward">API Credits + Recognition</span>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#prizes" class="btn btn-secondary" data-page="prizes">Learn More About Prizes</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section-dark">
+            <div class="container" style="text-align: center;">
+                <h2 class="section-title" style="margin-bottom: 1.5rem;">Ready to participate?</h2>
+                <p style="color: var(--gray); max-width: 500px; margin: 0 auto 2rem;">
+                    xDNMX is open to anyone doing foundational work. Researchers, engineers, independents, labs — anywhere in the world. If you're asking "why" and building "what's next," you belong here.
+                </p>
+                <a href="#participate" class="btn btn-primary" data-page="participate">See Requirements</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- ORIGIN PAGE -->
+    <div id="origin" class="page">
+        <div class="page-hero">
+            <div class="container">
+                <h1>The Origin</h1>
+                <p>How a simple question about switches led to a theory of emergence — and a community to continue the work.</p>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="container">
+                <h2>It Started With a Question</h2>
+                <p>"How many switches does it take to compute?"</p>
+                <p>A childlike question. The kind you ask before you know what's "supposed" to be hard. But sometimes those are the questions that open everything.</p>
+                
+                <h2>The Method</h2>
+                <p>Not sampling. Not intuition. Exhaustive exploration. Thousands of experiments run by AI, mapping entire possibility spaces, looking for patterns that human intuition would miss.</p>
+                <p>The answer wasn't a number — it was a structure. Thresholds where new capabilities emerge. Laws governing what any substrate can do.</p>
+                
+                <h2>What Emerged: Seven Papers</h2>
+                <p>A complete arc from mechanism to synthesis:</p>
+                
+                <div class="papers-grid">
+                    <div class="paper-card">
+                        <div class="paper-number">Paper 01</div>
+                        <h4>Hidden State as Mechanism</h4>
+                        <p>Establishes that hidden state is necessary for Control — context-dependent behavior.</p>
+                    </div>
+                    <div class="paper-card">
+                        <div class="paper-number">Paper 02</div>
+                        <h4>Self-Maintenance as Default</h4>
+                        <p>Shows that once hidden state exists, self-maintaining behavior emerges in 83.7% of non-trivial systems.</p>
+                    </div>
+                    <div class="paper-card">
+                        <div class="paper-number">Paper 03</div>
+                        <h4>Engineering Self-Maintenance</h4>
+                        <p>Provides practical tools to predict and engineer self-maintaining behavior in arbitrary substrates.</p>
+                    </div>
+                    <div class="paper-card">
+                        <div class="paper-number">Paper 04</div>
+                        <h4>Universal Computation Threshold</h4>
+                        <p>Proves a 5-bit minimum for universal computation, where Control is the critical capability.</p>
+                    </div>
+                    <div class="paper-card">
+                        <div class="paper-number">Paper 05</div>
+                        <h4>Constraint Dynamics</h4>
+                        <p>Maps how constraints and anti-resonance determine which behaviors actually emerge.</p>
+                    </div>
+                    <div class="paper-card">
+                        <div class="paper-number">Paper 06</div>
+                        <h4>Temporal Invariants</h4>
+                        <p>Reveals what survives is not what computes, but what repairs — the tension between capability and robustness.</p>
+                    </div>
+                    <div class="paper-card">
+                        <div class="paper-number">Paper 07</div>
+                        <h4>Substrate Complexity Theory</h4>
+                        <p>The synthesis. A unified framework for how capabilities emerge from substrate properties.</p>
+                    </div>
+                </div>
+
+                <h2>The Insight</h2>
+                <p>Life, mind, and computation aren't different phenomena. They're different regions in the same substrate capability space. A cell and Rule 110 are formally alike in terms of hidden state capacity, leakiness management, and boundary-mediated control.</p>
+                <p>That means we can predict what substrates can do. We can engineer emergence. We can move from conjecture to knowledge.</p>
+
+                <h2>Why xDNMX</h2>
+                <p>This work showed what's possible when curiosity meets exhaustive exploration. But it's just one example. There are thousands of researchers and engineers doing foundational work — often alone, often unrecognized, often in small towns far from major research hubs.</p>
+                <p>xDNMX exists to find them. To connect researchers with engineers who can build on their discoveries. To create an extended network where foundational work is celebrated, extended, and brought to life — anywhere in the world.</p>
+                <p>The "x" means extended. Like TEDx, anyone can run an xDNMX event. Local discoveries, global network. From discovery to building. That's xDNMX.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHILOSOPHY PAGE -->
+    <div id="philosophy" class="page">
+        <div class="page-hero">
+            <div class="container">
+                <h1>Philosophy</h1>
+                <p>What we believe. How we work. Why it matters.</p>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="container">
+                <h2>The Core Belief</h2>
+                <p>The deepest discoveries need builders, and the best engineering needs foundations.</p>
+                <p>Right now, these two tribes are separated. Researchers publish papers that engineers never see. Engineers build products without understanding why their intuitions work. The gap between discovery and building is where progress dies.</p>
+                <p>xDNMX bridges that gap — as an extended network that reaches everywhere. Not one conference in one city, but a global community of local events, all connected.</p>
+
+                <h2>Anyone Can Participate</h2>
+                <p>Singles, labs, teams — whatever. We don't ask where you're from. We don't check credentials. We ask: what did you find? What can you build?</p>
+                <p>A solo researcher with Claude and a hypothesis has equal standing with a well-funded lab. The work speaks for itself.</p>
+
+                <h2>Foundational, Not Incremental</h2>
+                <p>We care about "why does this work?" not just "what does this do?"</p>
+                <p>Laws over phenomena. Thresholds over optimizations. Understanding that opens new possibilities, not improvements that close them.</p>
+
+                <h2>Open By Default</h2>
+                <p>GitHub, not arXiv. Open source licenses, always. If it can't be verified, it can't be built on. If it can't be built on, it's not foundational — it's a dead end.</p>
+                <p>All submissions must be in a public repository with a recognized open source license. The community decides worth through engagement, not editorial gatekeeping.</p>
+
+                <h2>Why Share Here?</h2>
+                <p>Building momentum for independent research is hard. You publish a paper — nothing happens. You post on social media — it disappears in hours. You submit to journals — months of waiting, then rejection or obscurity.</p>
+                <p>xDNMX offers something different:</p>
+                <ul>
+                    <li><strong>Focused audience</strong> — People here want foundational work to build on</li>
+                    <li><strong>Researchers meet engineers</strong> — Your discovery finds its builder</li>
+                    <li><strong>Persistent visibility</strong> — GitHub doesn't vanish like tweets</li>
+                    <li><strong>Real engagement</strong> — Stars, forks, issues, not just likes</li>
+                    <li><strong>Prize recognition</strong> — API credits and public recognition</li>
+                    <li><strong>No gatekeepers</strong> — Post your repo. Peers decide worth.</li>
+                </ul>
+                <p>Traditional academia optimizes for credentials and citations. xDNMX optimizes for discovery and building. If your work is foundational, this is where it finds the people who care.</p>
+
+                <h2>A Different Path to Publication</h2>
+                <p>ArXiv requires endorsement — you need to know someone inside. Journals take months and hide behind paywalls. Social media is instant but ephemeral. None of them are designed for the independent researcher with a damn good observation that isn't yet a formal theory.</p>
+                <p>xDNMX offers another path:</p>
+                <ul>
+                    <li>Post your repo</li>
+                    <li>Explain what you found</li>
+                    <li>Get real peer engagement</li>
+                </ul>
+                <p>No credentials required. No formatting hoops. No endorsement. Just the work.</p>
+                
+                <h3>For Academics</h3>
+                <p>ArXiv and peer-reviewed journals remain essential for academic careers — we're not trying to replace them. But xDNMX can help you get there. Think of it as pre-arXiv: a place to test ideas, get early feedback, find collaborators, and strengthen your work before formal submission. The engagement you receive here — questions, issues, forks, builds — can sharpen your paper and identify blind spots before reviewers do.</p>
+                
+                <h3>For Independents</h3>
+                <p>If you're outside academia, formal publication may not be your goal — and that's fine. xDNMX might be your final destination, not a stepping stone. Your work finds its audience, connects with builders, and lives in a persistent, citable repo. Not everything needs to become a journal paper. Some things just need to find the people who can use them.</p>
+                
+                <p>Some of the most important insights start as observations, not theorems. "That's weird — why does that happen?" is how discovery begins. xDNMX is where those questions find their answers.</p>
+
+                <h2>AI-Powered Methodology</h2>
+                <p>Human intuition × AI exploration = discovery.</p>
+                <p>This is the methodology that makes exhaustive exploration possible. One person with AI can now map entire possibility spaces — work that once required teams, grants, years. We celebrate and advance this new way of doing science.</p>
+
+                <h2>Joyful</h2>
+                <p>For the fun of figuring it out. Not for prestige, not for publications, not for funding. For the joy of discovery and the satisfaction of building something real.</p>
+                <p>If it stops being joyful, we're doing it wrong.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PARTICIPATE PAGE -->
+    <div id="participate" class="page">
+        <div class="page-hero">
+            <div class="container">
+                <h1>Participate</h1>
+                <p>Two paths into DNMX. One for researchers, one for engineers. Both essential.</p>
+            </div>
+        </div>
+        <div class="page-content" style="padding: 0;">
+            <section class="section-dark">
+                <div class="container">
+                    <div class="requirements-grid">
+                        <div class="requirement-block">
+                            <div class="requirement-icon">🔬</div>
+                            <h3>For Researchers</h3>
+                            <p>Use AI to build a defensible paper. Show your discovery. Show the exhaustive exploration. Show what you found.</p>
+                            <ul class="requirement-list">
+                                <li>Public GitHub repository</li>
+                                <li>Open source license (MIT, Apache, GPL, BSD, CC-BY)</li>
+                                <li>AI-assisted methodology (Claude Code or equivalent)</li>
+                                <li>Defensible findings — reproducible, verifiable</li>
+                                <li>Clear README explaining discovery and significance</li>
+                                <li>Code and data included</li>
+                            </ul>
+                        </div>
+                        <div class="requirement-block">
+                            <div class="requirement-icon">🛠️</div>
+                            <h3>For Engineers</h3>
+                            <p>Build something foundational. Turn a discovery into reality — whether your own insight or inspired by existing research. Browse submitted papers for ideas, or bring your own.</p>
+                            <ul class="requirement-list">
+                                <li>Public GitHub repository</li>
+                                <li>Open source license (MIT, Apache, GPL, BSD, CC-BY)</li>
+                                <li>Foundational focus — not just an app, but why it works</li>
+                                <li>Workable implementation or proof of concept</li>
+                                <li>Clear README explaining the foundation you're building on</li>
+                                <li>Link to inspiring research if applicable</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="container">
+                    <h2>The xDNMX Standard</h2>
+                    <p>No journal. No arXiv. Just a GitHub repo with your finding, methodology, code, and data. Peers engage. Stars, forks, issues, builds. The work proves itself.</p>
+                    
+                    <h2>Why These Requirements?</h2>
+                    <p><strong>Open source</strong> because if it's not open, it can't be verified. If it can't be verified, it can't be built on.</p>
+                    <p><strong>AI-assisted</strong> because this is the methodology that enables exhaustive exploration. It's not about replacement — it's about amplification.</p>
+                    <p><strong>GitHub</strong> because code is there, data is there, the paper is there. Anyone can run it, verify it, extend it.</p>
+                    
+                    <h2>How to Submit</h2>
+                    <p>Submissions open annually. Post your repo link to the xDNMX GitHub Discussions under "Submissions." The community engages. The best work rises.</p>
+                    <div style="margin-top: 2rem;">
+                        <a href="https://github.com/RobinNixon/xdnmx" class="btn btn-primary" target="_blank">Visit xDNMX GitHub</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- PAPERS PAGE -->
+    <div id="papers" class="page">
+        <div class="page-hero">
+            <div class="container">
+                <h1>Paper Archive</h1>
+                <p>A home for foundational research. Link your work or upload directly. Discuss, collaborate, build.</p>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="container">
+                <h2>Two Ways to Share</h2>
+                <p>xDNMX supports researchers wherever they are in their journey. Whether your work lives on arXiv, in a GitHub repo, or nowhere yet — there's a place for it here.</p>
+
+                <div class="what-grid" style="margin: 2rem 0;">
+                    <div class="what-card">
+                        <h3>Link Your Work</h3>
+                        <p>Already published on arXiv? Have a GitHub repo? Share links to your existing work. The community can discover and discuss it here while your paper lives where it already belongs.</p>
+                    </div>
+                    <div class="what-card">
+                        <h3>Upload Directly</h3>
+                        <p>Haven't published elsewhere yet? Upload your PDF directly to our GitHub repository. Get a permanent, citable home for your research — no gatekeepers, no waiting.</p>
+                    </div>
+                </div>
+
+                <h2>Why Upload Here?</h2>
+                <p>Traditional publishing has barriers. ArXiv requires endorsement. Journals take months. Sometimes you have a valuable observation that isn't ready for formal publication but deserves to be shared.</p>
+                <p>The xDNMX Paper Archive offers:</p>
+                <ul>
+                    <li><strong>Immediate access</strong> — Upload today, discuss today</li>
+                    <li><strong>No credentials required</strong> — The work speaks for itself</li>
+                    <li><strong>Permanent home</strong> — GitHub repos don't disappear</li>
+                    <li><strong>Community engagement</strong> — Real discussion, not just citations</li>
+                    <li><strong>Path to building</strong> — Engineers browse for foundations to build on</li>
+                </ul>
+
+                <h2>How It Works</h2>
+                <ol>
+                    <li><strong>Submit your paper</strong> — Go to <a href="https://github.com/RobinNixon/xdnmx/discussions/categories/paper-submissions" target="_blank">Paper Submissions</a> and create a new discussion</li>
+                    <li><strong>Attach your PDF</strong> — Upload directly, or link to where it's hosted</li>
+                    <li><strong>Describe your work</strong> — What did you find? Why does it matter?</li>
+                    <li><strong>Community engages</strong> — Questions, feedback, collaboration offers</li>
+                    <li><strong>Discussion continues</strong> — Ongoing conversation in <a href="https://github.com/RobinNixon/xdnmx/discussions/categories/discussions" target="_blank">Paper Discussions</a></li>
+                </ol>
+
+                <h2>Complementary, Not Competing</h2>
+                <p>The Paper Archive doesn't replace traditional publication — it complements it. Use xDNMX to:</p>
+                <ul>
+                    <li><strong>Test ideas early</strong> — Get feedback before formal submission</li>
+                    <li><strong>Share observations</strong> — Not everything needs to be a theorem</li>
+                    <li><strong>Find collaborators</strong> — Researchers meet engineers</li>
+                    <li><strong>Build visibility</strong> — Independent work finds its audience</li>
+                </ul>
+                <p>For academics, think of it as pre-arXiv. For independents, it might be your final destination — and that's fine too.</p>
+
+                <h2>Discussion Boards</h2>
+                <p>The Papers section has two dedicated spaces:</p>
+                <ul>
+                    <li><strong>📄 Paper Submissions</strong> — Where new papers are posted with PDFs and descriptions</li>
+                    <li><strong>💬 Paper Discussions</strong> — Ongoing conversation about papers, follow-up questions, collaboration</li>
+                </ul>
+
+                <div class="community-cta" style="margin-top: 3rem;">
+                    <h3>Share Your Research</h3>
+                    <p>Whether it's a complete paper or a curious observation, the community is ready to engage.</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="https://github.com/RobinNixon/xdnmx/discussions/categories/paper-submissions" class="btn btn-primary" target="_blank">Submit a Paper</a>
+                        <a href="https://github.com/RobinNixon/xdnmx/discussions/categories/discussions" class="btn btn-secondary" target="_blank">Browse Discussions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PRIZES PAGE -->
+    <div id="prizes" class="page">
+        <div class="page-hero">
+            <div class="container">
+                <h1>Prizes</h1>
+                <p>Recognition for foundational work. API credits to continue the journey.</p>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="container">
+                <h2>The xDNMX Prizes</h2>
+                <p>Not money — capability. API credits are fuel for discovery. They turn a hypothesis into thousands of experiments. They let you keep building.</p>
+                
+                <div class="prizes-grid" style="margin: 3rem 0;">
+                    <div class="prize-card">
+                        <div class="prize-icon">🔬</div>
+                        <h3>Discovery Prize</h3>
+                        <p>Best foundational insight of the year. AI-powered research that reveals laws, thresholds, or necessities previously unknown.</p>
+                        <span class="prize-reward">12 Months API Credits</span>
+                    </div>
+                    <div class="prize-card">
+                        <div class="prize-icon">🌉</div>
+                        <h3>Bridge Prize</h3>
+                        <p>Best collaboration between research and engineering. A discovery made real through partnership.</p>
+                        <span class="prize-reward">6 Months API Credits (Each)</span>
+                    </div>
+                    <div class="prize-card">
+                        <div class="prize-icon">🛠️</div>
+                        <h3>Build Prize</h3>
+                        <p>Best foundational implementation. Something built that reveals or applies deep principles — whether from existing research or original insight.</p>
+                        <span class="prize-reward">6 Months API Credits</span>
+                    </div>
+                </div>
+
+                <h2>What Winners Get</h2>
+                <ul>
+                    <li><strong>API Credits</strong> — Substantial compute to continue your work</li>
+                    <li><strong>Recognition</strong> — Featured on DNMX, announced to the community</li>
+                    <li><strong>The Artifact</strong> — A physical trophy (design TBA)</li>
+                    <li><strong>Connection</strong> — Introductions to potential collaborators, sponsors, and supporters</li>
+                </ul>
+
+                <h2>Judging</h2>
+                <p>Community engagement matters — stars, forks, issues, builds. But final selection is by the xDNMX advisory panel, weighing:</p>
+                <ul>
+                    <li>Foundational significance — does this change how we see the space?</li>
+                    <li>Rigor — is it reproducible, verifiable, defensible?</li>
+                    <li>Openness — is everything available for others to build on?</li>
+                    <li>Methodology — was AI used effectively as a research partner?</li>
+                </ul>
+
+                <h2>Timeline</h2>
+                <p>Submissions open annually. Exact dates announced on GitHub Discussions and this site.</p>
+                
+                <div class="sponsor-section" style="margin-top: 3rem;">
+                    <div class="sponsor-placeholder">
+                        Prizes sponsored by [Partner]
+                    </div>
+                    <p style="color: var(--gray); font-size: 0.9rem;">Interested in sponsoring? <a href="#sponsor" data-page="sponsor">Learn more</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMMUNITY PAGE -->
+    <div id="community" class="page">
+        <div class="page-hero">
+            <div class="container">
+                <h1>Community</h1>
+                <p>Where the work lives. Where collaborations form. Where discoveries are shared.</p>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="container">
+                <h2>GitHub is Home</h2>
+                <p>All community activity happens on GitHub. Discussions, submissions, collaborations — everything in one place, tied to the work itself.</p>
+                
+                <h2>The xDNMX Starter Kit</h2>
+                <p>Want to run your own xDNMX event? The GitHub repo has everything you need:</p>
+                <ul>
+                    <li>Brand assets (logo, colors, fonts)</li>
+                    <li>Event planning templates</li>
+                    <li>The philosophy and code of conduct</li>
+                    <li>How to run a "Discovery → Building" session</li>
+                    <li>Budget templates (keep it cheap)</li>
+                    <li>How to connect your local event to the global network</li>
+                </ul>
+                <p>Ten people in a library. One projector, wifi, laptops. Local researcher shows what they found. Local engineer says "I could build that." Results posted to the global repo that night. That's an xDNMX event.</p>
+                
+                <h2>Discussion Spaces</h2>
+                <ul>
+                    <li><strong>💡 Discoveries</strong> — "I found something, here's my repo"</li>
+                    <li><strong>🛠️ Build Plans</strong> — "I want to build on this paper"</li>
+                    <li><strong>🤝 Collaborations</strong> — "Researcher seeking engineer" / "Engineer seeking foundation"</li>
+                    <li><strong>❓ Questions</strong> — "Has anyone explored X?"</li>
+                    <li><strong>🏆 Nominations</strong> — "This work deserves recognition"</li>
+                </ul>
+
+                <h2>Why GitHub?</h2>
+                <p>Not Discord. Not Slack. GitHub. Because:</p>
+                <ul>
+                    <li>Tied to the repos — context stays together</li>
+                    <li>Persistent and searchable — not chat ephemera</li>
+                    <li>Open by default — no invite needed to read</li>
+                    <li>Threaded, organized, async-friendly</li>
+                </ul>
+
+                <div class="community-cta">
+                    <h3>Join the Network</h3>
+                    <p>Start a discussion. Share your work. Find collaborators. Run a local event. The extended network is building now.</p>
+                    <a href="https://github.com/RobinNixon/xdnmx" class="btn btn-primary" target="_blank">github.com/RobinNixon/xdnmx</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SPONSOR PAGE -->
+    <div id="sponsor" class="page">
+        <div class="page-hero">
+            <div class="container">
+                <h1>Sponsor</h1>
+                <p>Support foundational research. Enable independent discovery. Build the future together.</p>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="container">
+                <h2>Why Sponsor xDNMX?</h2>
+                <p>xDNMX represents a new way of doing science: human intuition amplified by AI, independent researchers operating at lab scale, foundational discoveries flowing to engineers who can build on them — anywhere in the world.</p>
+                <p>Sponsors enable this extended network. They provide the compute that turns hypotheses into experiments, the recognition that validates independent work, the connections that turn discoveries into reality.</p>
+
+                <h2>What We Need</h2>
+                <ul>
+                    <li><strong>API Credits</strong> — The primary prize. Compute is capability.</li>
+                    <li><strong>Recognition</strong> — Your name associated with foundational research</li>
+                    <li><strong>Connection</strong> — Access to researchers and engineers doing breakthrough work</li>
+                </ul>
+
+                <h2>Sponsorship Tiers</h2>
+                <p>Named after substrate concepts from the founding research:</p>
+                <ul>
+                    <li><strong>🔷 Glider Tier</strong> — Supports community infrastructure</li>
+                    <li><strong>🔷 Boundary Tier</strong> — Funds travel scholarships for independents</li>
+                    <li><strong>🔷 Threshold Tier</strong> — Funds annual prizes</li>
+                    <li><strong>🔷 Universal Tier</strong> — Founding partner status</li>
+                </ul>
+
+                <h2>What Sponsors Get</h2>
+                <ul>
+                    <li>Name on prizes: "Discovery Prize, sponsored by [Partner]"</li>
+                    <li>Recognition on website and in all announcements</li>
+                    <li>Early access to winning submissions and researchers</li>
+                    <li>Invitation to advisory discussions (not control — input)</li>
+                    <li>Goodwill of fostering an independent research community</li>
+                </ul>
+
+                <h2>What Sponsors Don't Get</h2>
+                <p>Control over content. Keynote slots. Recruiting access. IP claims. This isn't a trade show. Sponsors support the mission — they don't shape it.</p>
+
+                <h2>Interested?</h2>
+                <p>Reach out. Let's talk about how you can support foundational research and connect with the builders shaping what's next.</p>
+                <div style="margin-top: 2rem;">
+                    <a href="#" onclick="window.location.href='mail'+'to:'+'robinfnixon+xdnmx'+'@'+'gmail'+'.com'; return false;" class="btn btn-primary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#home" class="nav-logo" data-page="home">
+                    <img src="images/logo.png" alt="xDNMX" style="height: 40px; filter: invert(1);">
+                    <span>xDNMX</span>
+                </a>
+                <p>Extended network. From discovery to building.<br>Foundational research for visionary builders — anywhere.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Learn</h4>
+                <ul>
+                    <li><a href="#origin" data-page="origin">Origin</a></li>
+                    <li><a href="#philosophy" data-page="philosophy">Philosophy</a></li>
+                    <li><a href="#participate" data-page="participate">Participate</a></li>
+                    <li><a href="#papers" data-page="papers">Papers</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Engage</h4>
+                <ul>
+                    <li><a href="#prizes" data-page="prizes">Prizes</a></li>
+                    <li><a href="#community" data-page="community">Community</a></li>
+                    <li><a href="https://github.com/RobinNixon/xdnmx" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#sponsor" data-page="sponsor">Become a Sponsor</a></li>
+                    <li><a href="#" onclick="window.location.href='mail'+'to:'+'robinfnixon+xdnmx'+'@'+'gmail'+'.com'; return false;">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 xDNMX. Open source, open science, open future.</span>
+            <span>Built with curiosity and Claude.</span>
+        </div>
+    </footer>
+
+    <script>
+        // Simple SPA navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('[data-page]');
+            const pages = document.querySelectorAll('.page');
+            
+            function showPage(pageId) {
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                const targetPage = document.getElementById(pageId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                    window.scrollTo(0, 0);
+                }
+                // Close mobile nav
+                document.querySelector('.nav-links').classList.remove('active');
+            }
+
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const pageId = this.getAttribute('data-page');
+                    showPage(pageId);
+                    history.pushState(null, '', '#' + pageId);
+                });
+            });
+
+            // Handle back/forward
+            window.addEventListener('popstate', function() {
+                const hash = window.location.hash.slice(1) || 'home';
+                showPage(hash);
+            });
+
+            // Handle initial hash
+            const initialHash = window.location.hash.slice(1) || 'home';
+            showPage(initialHash);
+        });
+
+        function toggleNav() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
